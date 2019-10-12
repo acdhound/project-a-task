@@ -1,36 +1,26 @@
 <template>
-  <div>
-    <h2>Employee Tab</h2>
-    <h3>{{employeeValue}}</h3>
-
-    <h2>Employer Tab</h2>
-    <h3>{{employerValue}}</h3>
-  </div>
+    <div>
+        <form @submit="submitValue">
+            <input type="number" v-model="value">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'SalaryForm',
-  props: {
-    employeeValue: Number,
-    employerValue: Number
-  }
+    name: 'SalaryForm',
+    data() {
+        return {
+            value: 0
+        };
+    },
+    methods: {
+        submitValue(e) {
+            e.preventDefault();
+            const newValue = this.value;
+            this.$emit('change-value', newValue)
+        }
+    }
 }
 </script>
-
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

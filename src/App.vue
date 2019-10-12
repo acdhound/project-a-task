@@ -1,24 +1,16 @@
 <template>
   <div id="app">
-    <h1>Salary negotiation tool</h1>
-    <SalaryForm v-bind:employeeValue="employeeValue"
-      v-bind:employerValue="employerValue"></SalaryForm>
+    <SalaryForms></SalaryForms>
   </div>
 </template>
 
 <script>
-import SalaryForm from './components/SalaryForm.vue'
+import SalaryForms from './components/SalaryForms.vue'
 
 export default {
   name: 'app',
   components: {
-    SalaryForm
-  },
-  data() {
-    return {
-      employeeValue: 0,
-      employerValue: 0
-    };
+    SalaryForms
   }
 }
 </script>
