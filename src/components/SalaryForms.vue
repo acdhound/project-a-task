@@ -50,7 +50,9 @@ export default {
       this.$emit('submit-salary', {
         maxOffer: this.employerValue,
         minSalary: this.employeeValue
-      })
+      });
+      this.employeeSubmitted = false;
+      this.employerSubmitted = false;
     }
   }
 }
