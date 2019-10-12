@@ -1,16 +1,24 @@
 <template>
   <div id="app">
-    <MyComponent msg="Welcome to my Vue.js App"/>
+    <h1>Salary negotiation tool</h1>
+    <SalaryForm v-bind:employeeValue="employeeValue"
+      v-bind:employerValue="employerValue"></SalaryForm>
   </div>
 </template>
 
 <script>
-import MyComponent from './components/MyComponent.vue'
+import SalaryForm from './components/SalaryForm.vue'
 
 export default {
   name: 'app',
   components: {
-    MyComponent
+    SalaryForm
+  },
+  data() {
+    return {
+      employeeValue: 0,
+      employerValue: 0
+    };
   }
 }
 </script>

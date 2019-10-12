@@ -1,15 +1,19 @@
 <template>
-  <div class="hello">
-    <h1>My component</h1>
-    <h2>{{ msg }}</h2>
+  <div>
+    <h2>Employee Tab</h2>
+    <h3>{{employeeValue}}</h3>
+
+    <h2>Employer Tab</h2>
+    <h3>{{employerValue}}</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MyComponent',
+  name: 'SalaryForm',
   props: {
-    msg: String
+    employeeValue: Number,
+    employerValue: Number
   }
 }
 </script>
