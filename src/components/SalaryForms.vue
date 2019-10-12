@@ -7,10 +7,12 @@
 
     <div class="tab-content">
       <SalaryForm v-bind:class="{ hidden: activeTab }"
-        v-on:change-value="changeEmployeeValue" v-bind:initValue="employeeValue"></SalaryForm>
+        v-on:change-value="changeEmployeeValue" v-bind:initValue="employeeValue"
+        caption="Enter minimum salary"></SalaryForm>
 
       <SalaryForm v-bind:class="{ hidden: !activeTab }"
-        v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"></SalaryForm>
+        v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"
+        caption="Enter maximum offer"></SalaryForm>
     </div>
   </div>
 </template>
