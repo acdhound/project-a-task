@@ -19,19 +19,26 @@ export default {
   data() {
     return {
       employeeValue: 0,
-      employerValue: 0
+      employeeSubmitted: false,
+      employerValue: 0,
+      employerSubmitted: false
     };
   },
   methods: {
     changeEmployeeValue(newValue) {
       this.employeeValue = newValue;
+      this.employeeSubmitted = true;
       this.validateValues();
     },
     changeEmployerValue(newValue) {
       this.employerValue = newValue;
+      this.employerSubmitted = true;
       this.validateValues();
     },
     validateValues() {
+      if ((!this.employeeSubmitted) || (!this.employerSubmitted)) {
+        return;
+      }
       if (this.employeeValue > this.employerValue) {
         alert('Failure!');
         return;
