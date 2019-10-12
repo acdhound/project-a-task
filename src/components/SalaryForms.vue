@@ -1,19 +1,17 @@
 <template>
   <div>
-    <h1>Salary negotiation tool</h1>
+    <div class="tab-header" v-bind:class="{ active: !activeTab }"
+      v-on:click="activeTab = !activeTab">Employee Tab</div>
+    <div class="tab-header" v-bind:class="{ active: activeTab }"
+      v-on:click="activeTab = !activeTab">Employer Tab</div>
 
-    <ul>
-      <li v-bind:class="{ active: !activeTab }"
-        v-on:click="activeTab = !activeTab">Employee Tab</li>
-      <li v-bind:class="{ active: activeTab }"
-        v-on:click="activeTab = !activeTab">Employer Tab</li>
-    </ul>
+    <div class="tab-content">
+      <SalaryForm v-bind:class="{ hidden: activeTab }"
+        v-on:change-value="changeEmployeeValue" v-bind:initValue="employeeValue"></SalaryForm>
 
-    <SalaryForm v-bind:class="{ hidden: activeTab }"
-      v-on:change-value="changeEmployeeValue" v-bind:initValue="employeeValue"></SalaryForm>
-
-    <SalaryForm v-bind:class="{ hidden: !activeTab }"
-      v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"></SalaryForm>
+      <SalaryForm v-bind:class="{ hidden: !activeTab }"
+        v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"></SalaryForm>
+    </div>
   </div>
 </template>
 
@@ -57,18 +55,27 @@ export default {
 </script>
 
 <style scoped>
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
+.tab-header {
   display: inline-block;
-  margin: 0 10px;
+  user-select: none;
+  cursor: pointer;
+  border: #2c3e50 1px solid;
+  padding: 10px;
 }
 .hidden {
   display: none;
 }
 .active {
-  color: #42b983;
+  color: #ffffff;
+  background-color: #2c3e50;
+}
+.tab-content {
+  border: #2c3e50 1px solid;
+  position: relative;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 </style>

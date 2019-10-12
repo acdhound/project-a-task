@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>Salary negotiation tool</h1>
     <SalaryForms v-on:submit-salary="showModal"></SalaryForms>
     <ModalDialog v-bind:active="modalActive" v-bind:title="modalTitle"
       v-bind:maxOffer="maxOffer" v-bind:minSalary="minSalary"
