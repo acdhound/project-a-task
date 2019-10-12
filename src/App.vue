@@ -1,16 +1,39 @@
 <template>
   <div id="app">
-    <SalaryForms></SalaryForms>
+    <SalaryForms v-on:submit-salary="showModal"></SalaryForms>
+    <ModalDialog v-bind:active="modalActive" v-bind:title="modalTitle"
+      v-bind:maxOffer="maxOffer" v-bind:minSalary="minSalary"
+      v-on:press-ok="closeModal"></ModalDialog>
   </div>
 </template>
 
 <script>
 import SalaryForms from './components/SalaryForms.vue'
+import ModalDialog from './components/ModalDialog.vue'
 
 export default {
   name: 'app',
   components: {
-    SalaryForms
+    SalaryForms, ModalDialog
+  },
+  data() {
+    return {
+      modalActive: false,
+      modalTitle: "",
+      maxOffer: 0,
+      minSalary: 0
+    };
+  },
+  methods: {
+    showModal(e) {
+      this.maxOffer = e.maxOffer;
+      this.minSalary = e.minSalary;
+      this.modalTitle = (this.maxOffer >= this.minSalary) ? "Success!" : "Failure!";
+      this.modalActive = true;
+    },
+    closeModal() {
+      this.modalActive = false;
+    }
   }
 }
 </script>
@@ -22,6 +45,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>

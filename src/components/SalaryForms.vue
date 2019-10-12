@@ -36,31 +36,27 @@ export default {
     changeEmployeeValue(newValue) {
       this.employeeValue = newValue;
       this.employeeSubmitted = true;
-      this.validateValues();
+      this.submitSalary();
     },
     changeEmployerValue(newValue) {
       this.employerValue = newValue;
       this.employerSubmitted = true;
-      this.validateValues();
+      this.submitSalary();
     },
-    validateValues() {
+    submitSalary() {
       if ((!this.employeeSubmitted) || (!this.employerSubmitted)) {
         return;
       }
-      if (this.employeeValue > this.employerValue) {
-        alert('Failure!');
-        return;
-      }
-      alert('Success!');
+      this.$emit('submit-salary', {
+        maxOffer: this.employerValue,
+        minSalary: this.employeeValue
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
 ul {
   list-style-type: none;
   padding: 0;
@@ -68,9 +64,6 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 .hidden {
   display: none;
