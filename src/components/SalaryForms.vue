@@ -2,11 +2,18 @@
   <div>
     <h1>Salary negotiation tool</h1>
 
-    <h2>Employee Tab</h2>
-    <SalaryForm v-on:change-value="changeEmployeeValue"></SalaryForm>
+    <ul>
+      <li v-bind:class="{ active: !activeTab }"
+        v-on:click="activeTab = !activeTab">Employee Tab</li>
+      <li v-bind:class="{ active: activeTab }"
+        v-on:click="activeTab = !activeTab">Employer Tab</li>
+    </ul>
 
-    <h2>Employer Tab</h2>
-    <SalaryForm v-on:change-value="changeEmployerValue"></SalaryForm>
+    <SalaryForm v-bind:class="{ hidden: activeTab }"
+      v-on:change-value="changeEmployeeValue" v-bind:initValue="employeeValue"></SalaryForm>
+
+    <SalaryForm v-bind:class="{ hidden: !activeTab }"
+      v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"></SalaryForm>
   </div>
 </template>
 
@@ -21,7 +28,8 @@ export default {
       employeeValue: 0,
       employeeSubmitted: false,
       employerValue: 0,
-      employerSubmitted: false
+      employerSubmitted: false,
+      activeTab: false
     };
   },
   methods: {
@@ -62,6 +70,12 @@ li {
   margin: 0 10px;
 }
 a {
+  color: #42b983;
+}
+.hidden {
+  display: none;
+}
+.active {
   color: #42b983;
 }
 </style>

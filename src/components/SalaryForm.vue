@@ -10,9 +10,12 @@
 <script>
 export default {
     name: 'SalaryForm',
+    props: {
+        initValue: Number
+    },
     data() {
         return {
-            value: 0
+            value: this.initValue
         };
     },
     methods: {
