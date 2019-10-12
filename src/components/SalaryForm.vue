@@ -1,7 +1,7 @@
 <template>
     <div>
         <form @submit="submitValue">
-            <input type="number" v-model="value">
+            <input type="number" v-model.number="value">
             <input type="submit" value="Submit">
         </form>
     </div>

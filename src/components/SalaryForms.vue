@@ -6,7 +6,7 @@
     <SalaryForm v-on:change-value="changeEmployeeValue"></SalaryForm>
 
     <h2>Employer Tab</h2>
-    <SalaryForm></SalaryForm>
+    <SalaryForm v-on:change-value="changeEmployerValue"></SalaryForm>
   </div>
 </template>
 
@@ -25,6 +25,18 @@ export default {
   methods: {
     changeEmployeeValue(newValue) {
       this.employeeValue = newValue;
+      this.validateValues();
+    },
+    changeEmployerValue(newValue) {
+      this.employerValue = newValue;
+      this.validateValues();
+    },
+    validateValues() {
+      if (this.employeeValue > this.employerValue) {
+        alert('Failure!');
+        return;
+      }
+      alert('Success!');
     }
   }
 }
