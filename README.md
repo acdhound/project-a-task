@@ -1,24 +1,16 @@
-# project-a-task
-
-## Project setup
+## Quickly build and run the app on localhost:5000
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
+npm run build
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Run dev build with tests and linting
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+npm run build:dev
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Run in dev mode on localhost:8000
+```
+npm run serve:dev
+```
