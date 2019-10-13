@@ -1,5 +1,5 @@
 <template>
-    <div v-if="active" class="modal">
+    <div class="modal">
         <div class="content">
             <h2>{{title}}</h2>
             Maximum offer was: {{maxOffer}} <br>
@@ -13,7 +13,6 @@
 export default {
     name: "ModalDialog",
     props: {
-        active: Boolean,
         title: String,
         maxOffer: Number,
         minSalary: Number

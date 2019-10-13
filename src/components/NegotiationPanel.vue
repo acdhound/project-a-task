@@ -14,7 +14,7 @@
         v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"
         caption="Enter maximum offer"></SalaryForm>
     </div>
-    <ModalDialog v-bind:active="modalActive" v-bind:title="modalTitle"
+    <ModalDialog v-show="modalActive" v-bind:title="modalTitle"
       v-bind:maxOffer="employerValue" v-bind:minSalary="employeeValue"
       v-on:press-ok="closeModal"></ModalDialog>
   </div>
