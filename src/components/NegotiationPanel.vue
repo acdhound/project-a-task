@@ -21,7 +21,7 @@
 import SalaryForm from './SalaryForm.vue'
 
 export default {
-  name: 'SalaryForms',
+  name: 'NegotiationPanel',
   components: { SalaryForm },
   data() {
     return {

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Salary negotiation tool</h1>
-    <SalaryForms v-on:submit-salary="showModal"></SalaryForms>
+    <NegotiationPanel v-on:submit-salary="showModal"></NegotiationPanel>
     <ModalDialog v-bind:active="modalActive" v-bind:title="modalTitle"
       v-bind:maxOffer="maxOffer" v-bind:minSalary="minSalary"
       v-on:press-ok="closeModal"></ModalDialog>
@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import SalaryForms from './components/SalaryForms.vue'
+import NegotiationPanel from './components/NegotiationPanel.vue'
 import ModalDialog from './components/ModalDialog.vue'
 
 export default {
   name: 'app',
   components: {
-    SalaryForms, ModalDialog
+    NegotiationPanel, ModalDialog
   },
   data() {
     return {
