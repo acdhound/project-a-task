@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="tab-header" v-bind:class="{ active: !activeTab }"
-      v-on:click="activeTab = !activeTab">Employee Tab</div>
+      v-on:click="activeTab = false">Employee Tab</div>
     <div class="tab-header" v-bind:class="{ active: activeTab }"
-      v-on:click="activeTab = !activeTab">Employer Tab</div>
+      v-on:click="activeTab = true">Employer Tab</div>
 
     <div class="tab-content">
-      <SalaryForm v-bind:class="{ hidden: activeTab }"
+      <SalaryForm v-show="!activeTab"
         v-on:change-value="changeEmployeeValue" v-bind:initValue="employeeValue"
         caption="Enter minimum salary"></SalaryForm>
 
-      <SalaryForm v-bind:class="{ hidden: !activeTab }"
+      <SalaryForm v-show="activeTab"
         v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"
         caption="Enter maximum offer"></SalaryForm>
     </div>
@@ -72,9 +72,6 @@ export default {
   cursor: pointer;
   border: #2c3e50 1px solid;
   padding: 10px;
-}
-.hidden {
-  display: none;
 }
 .active {
   color: #ffffff;
