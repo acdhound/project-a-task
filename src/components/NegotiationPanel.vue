@@ -55,8 +55,6 @@ export default {
       }
       this.modalTitle = (this.employerValue >= this.employeeValue) ? "Success!" : "Failure!";
       this.modalActive = true;
-      this.employeeSubmitted = false;
-      this.employerSubmitted = false;
     },
     closeModal() {
       this.modalActive = false;

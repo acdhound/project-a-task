@@ -2,8 +2,10 @@
     <div>
         <form @submit="submitValue">
             {{caption}}<br>
-            <input type="number" v-model.number="value" min="0" step="0.1"><br>
-            <input type="submit" value="Submit">
+            <div v-show="!submitted">
+                <input type="number" v-model.number="value" min="0" step="0.1"><br>
+                <input type="submit" value="Submit">
+            </div>
         </form>
     </div>
 </template>
@@ -17,14 +19,16 @@ export default {
     },
     data() {
         return {
-            value: this.initValue
+            value: this.initValue,
+            submitted: false
         };
     },
     methods: {
         submitValue(e) {
             e.preventDefault();
             const newValue = this.value;
-            this.$emit('change-value', newValue)
+            this.$emit('change-value', newValue);
+            this.submitted = true;
         }
     }
 }
