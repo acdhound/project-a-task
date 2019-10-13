@@ -14,45 +14,52 @@
         v-on:change-value="changeEmployerValue" v-bind:initValue="employerValue"
         caption="Enter maximum offer"></SalaryForm>
     </div>
+    <ModalDialog v-bind:active="modalActive" v-bind:title="modalTitle"
+      v-bind:maxOffer="employerValue" v-bind:minSalary="employeeValue"
+      v-on:press-ok="closeModal"></ModalDialog>
   </div>
 </template>
 
 <script>
 import SalaryForm from './SalaryForm.vue'
+import ModalDialog from './ModalDialog.vue'
 
 export default {
   name: 'NegotiationPanel',
-  components: { SalaryForm },
+  components: { SalaryForm, ModalDialog },
   data() {
     return {
       employeeValue: 0,
       employeeSubmitted: false,
       employerValue: 0,
       employerSubmitted: false,
-      activeTab: false
+      activeTab: false,
+      modalActive: false,
+      modalTitle: ""
     };
   },
   methods: {
     changeEmployeeValue(newValue) {
       this.employeeValue = newValue;
       this.employeeSubmitted = true;
-      this.submitSalary();
+      this.validateAndShowModal();
     },
     changeEmployerValue(newValue) {
       this.employerValue = newValue;
       this.employerSubmitted = true;
-      this.submitSalary();
+      this.validateAndShowModal();
     },
-    submitSalary() {
+    validateAndShowModal() {
       if ((!this.employeeSubmitted) || (!this.employerSubmitted)) {
         return;
       }
-      this.$emit('submit-salary', {
-        maxOffer: this.employerValue,
-        minSalary: this.employeeValue
-      });
+      this.modalTitle = (this.employerValue >= this.employeeValue) ? "Success!" : "Failure!";
+      this.modalActive = true;
       this.employeeSubmitted = false;
       this.employerSubmitted = false;
+    },
+    closeModal() {
+      this.modalActive = false;
     }
   }
 }
