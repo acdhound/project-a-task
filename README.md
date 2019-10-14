@@ -10,7 +10,12 @@ npm run serve
 npm run build:dev
 ```
 
-### Run in dev mode on localhost:8000
+### Run unit tests
+```
+npm run test:unit
+```
+
+### Run the app in dev mode on localhost:8000
 ```
 npm run serve:dev
 ```
